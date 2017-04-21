@@ -1,0 +1,50 @@
+********** 8/26/2016 12:00:49 AM **********
+Requested Resource: http://localhost:50342/connect/Performselectonsettings
+Client Browser Details:  Chrome 51.0
+Mobile Device: False
+Client IP: ::1
+Request Type: GET
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: Unable to complete network request to host "192.168.0.88".
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.GdsConnection.Connect() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\GdsConnection.cs:line 133
+   at FirebirdSql.Data.FirebirdClient.ClientFactory.CreateManagedDatabase(FbConnectionString options) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\ClientFactory.cs:line 67
+   at FirebirdSql.Data.FirebirdClient.ClientFactory.CreateDatabase(FbConnectionString options) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\ClientFactory.cs:line 33
+   at FirebirdSql.Data.FirebirdClient.FbConnectionInternal.Connect() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionInternal.cs:line 157
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Unable to complete network request to host "192.168.0.88".
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbConnectionInternal.Connect() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionInternal.cs:line 182
+   at FirebirdSql.Data.FirebirdClient.FbConnectionPoolManager.Pool.CreateNewConnection(FbConnectionString connectionString) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionPoolManager.cs:line 166
+   at FirebirdSql.Data.FirebirdClient.FbConnectionPoolManager.Pool.CreateNewConnectionIfPossibleImpl(FbConnectionString connectionString) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionPoolManager.cs:line 200
+   at FirebirdSql.Data.FirebirdClient.FbConnectionPoolManager.Pool.GetConnection(FbConnection owner) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionPoolManager.cs:line 106
+   at FirebirdSql.Data.FirebirdClient.FbConnectionPoolManager.Get(FbConnectionString connectionString, FbConnection owner) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionPoolManager.cs:line 221
+   at FirebirdSql.Data.FirebirdClient.FbConnection.Open() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnection.cs:line 520
+   at JSONFirebirdWebServiceTest.Connect.DBConnectionController.PerformSelectOnSettings() in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Connect\DBConnectionController.cs:line 92
+
+********** 8/26/2016 12:00:55 AM **********
+Requested Resource: http://localhost:50342/connect/performselectonsettings
+Client Browser Details:  Chrome 51.0
+Mobile Device: False
+Client IP: ::1
+Request Type: GET
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: Unable to complete network request to host "192.168.0.88".
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.GdsConnection.Connect() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\GdsConnection.cs:line 133
+   at FirebirdSql.Data.FirebirdClient.ClientFactory.CreateManagedDatabase(FbConnectionString options) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\ClientFactory.cs:line 67
+   at FirebirdSql.Data.FirebirdClient.ClientFactory.CreateDatabase(FbConnectionString options) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\ClientFactory.cs:line 33
+   at FirebirdSql.Data.FirebirdClient.FbConnectionInternal.Connect() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionInternal.cs:line 157
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Unable to complete network request to host "192.168.0.88".
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbConnectionInternal.Connect() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionInternal.cs:line 182
+   at FirebirdSql.Data.FirebirdClient.FbConnectionPoolManager.Pool.CreateNewConnection(FbConnectionString connectionString) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionPoolManager.cs:line 166
+   at FirebirdSql.Data.FirebirdClient.FbConnectionPoolManager.Pool.CreateNewConnectionIfPossibleImpl(FbConnectionString connectionString) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionPoolManager.cs:line 200
+   at FirebirdSql.Data.FirebirdClient.FbConnectionPoolManager.Pool.GetConnection(FbConnection owner) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionPoolManager.cs:line 106
+   at FirebirdSql.Data.FirebirdClient.FbConnectionPoolManager.Get(FbConnectionString connectionString, FbConnection owner) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnectionPoolManager.cs:line 221
+   at FirebirdSql.Data.FirebirdClient.FbConnection.Open() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbConnection.cs:line 520
+   at JSONFirebirdWebServiceTest.Connect.DBConnectionController.PerformSelectOnSettings() in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Connect\DBConnectionController.cs:line 92
+

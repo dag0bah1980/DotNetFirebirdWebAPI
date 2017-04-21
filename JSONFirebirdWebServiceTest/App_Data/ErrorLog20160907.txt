@@ -1,0 +1,15 @@
+********** 9/7/2016 12:39:06 AM **********
+Requested Resource: http://localhost:50342/auth/Login/ADMIN/pword
+Client Browser Details:  Chrome 52.0
+Mobile Device: False
+Client IP: ::1
+Request Type: GET
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Must declare the variable '@uname'
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.UpdateParameterValues() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1027
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1217
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteReader(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 539
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteReader() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 517
+   at JSONFirebirdWebServiceTest.Controllers.AuthenticateController.Login(String username, String password) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\AuthenticateController.cs:line 58
+

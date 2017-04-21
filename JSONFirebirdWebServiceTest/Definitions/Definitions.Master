@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Definitions.master.cs" Inherits="JSONFirebirdWebServiceTest.Definitions.Definitions" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:Literal ID="PageTitleLiteral" runat="Server"></asp:Literal></title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ResourceName" runat="server">        
+        </asp:ContentPlaceHolder>
+        <a href="./Index.aspx">Return to Resource Listing</a><br />
+        <asp:ContentPlaceHolder ID="DescriptionOfResource" runat="server">        
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ResourceCalls" runat="server">        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

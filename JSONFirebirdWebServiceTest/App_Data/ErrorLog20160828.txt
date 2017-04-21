@@ -1,0 +1,103 @@
+********** 8/28/2016 12:05:48 AM **********
+Requested Resource: http://localhost:50342/api/settings
+Client Browser Details:  Chrome 51.0
+Mobile Device: False
+Client IP: ::1
+Request Type: POST
+Exception Type: System.NullReferenceException
+Exception: Object reference not set to an instance of an object.
+Stack Trace: 
+   at JSONFirebirdWebServiceTest.Controllers.SettingsController.Post(Settings newSetting) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\SettingsController.cs:line 214
+
+********** 8/28/2016 12:27:07 AM **********
+Requested Resource: http://localhost:50342/api/settings
+Client Browser Details:  Chrome 51.0
+Mobile Device: False
+Client IP: ::1
+Request Type: POST
+Exception Type: System.NullReferenceException
+Exception: Object reference not set to an instance of an object.
+Stack Trace: 
+   at JSONFirebirdWebServiceTest.Controllers.SettingsController.Post(Settings newSetting) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\SettingsController.cs:line 214
+
+********** 8/28/2016 1:27:48 AM **********
+Requested Resource: http://localhost:50342/api/Settings/10019
+Client Browser Details:  Chrome 51.0
+Mobile Device: False
+Client IP: ::1
+Request Type: PUT
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 85
+WHERE
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ProcessResponse(IResponse response) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 644
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 673
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadGenericResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 681
+   at FirebirdSql.Data.Client.Managed.Version11.GdsStatement.Prepare(String commandText) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version11\GdsStatement.cs:line 84
+   at FirebirdSql.Data.FirebirdClient.FbCommand.Prepare(Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1169
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1190
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 480
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 85
+WHERE
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 493
+   at JSONFirebirdWebServiceTest.Controllers.SettingsController.Update(Int32 updatedId, Settings updatedSetting) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\SettingsController.cs:line 314
+
+********** 8/28/2016 1:28:51 AM **********
+Requested Resource: http://localhost:50342/api/Settings/10019
+Client Browser Details:  Chrome 51.0
+Mobile Device: False
+Client IP: ::1
+Request Type: PUT
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Must declare the variable '@ID'
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.UpdateParameterValues() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1027
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1217
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 499
+   at JSONFirebirdWebServiceTest.Controllers.SettingsController.Update(Int32 updatedId, Settings updatedSetting) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\SettingsController.cs:line 314
+
+********** 8/28/2016 1:30:18 AM **********
+Requested Resource: http://localhost:50342/api/Settings/10019
+Client Browser Details:  Chrome 51.0
+Mobile Device: False
+Client IP: ::1
+Request Type: PUT
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Must declare the variable '@ID'
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.UpdateParameterValues() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1027
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1217
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 499
+   at JSONFirebirdWebServiceTest.Controllers.SettingsController.Update(Int32 updatedId, Settings updatedSetting) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\SettingsController.cs:line 316
+
+********** 8/28/2016 1:31:13 AM **********
+Requested Resource: http://localhost:50342/api/Settings/10019
+Client Browser Details:  Chrome 51.0
+Mobile Device: False
+Client IP: ::1
+Request Type: PUT
+Exception Type: System.FormatException
+Exception: String was not recognized as a valid Boolean.
+Stack Trace: 
+   at System.Boolean.Parse(String value)
+   at System.String.System.IConvertible.ToBoolean(IFormatProvider provider)
+   at System.Convert.ToBoolean(Object value)
+   at FirebirdSql.Data.Client.Managed.Version10.GdsStatement.WriteRawParameter(XdrStream xdr, DbField field) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsStatement.cs:line 890
+   at FirebirdSql.Data.Client.Managed.Version13.GdsStatement.WriteParameters() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version13\GdsStatement.cs:line 71
+   at FirebirdSql.Data.Client.Managed.Version10.GdsStatement.SendExecuteToBuffer() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsStatement.cs:line 587
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.Execute() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version12\GdsStatement.cs:line 61
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1221
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 499
+   at JSONFirebirdWebServiceTest.Controllers.SettingsController.Update(Int32 updatedId, Settings updatedSetting) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\SettingsController.cs:line 317
+

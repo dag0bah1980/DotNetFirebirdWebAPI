@@ -1,0 +1,33 @@
+********** 11/11/2016 5:53:20 AM **********
+Requested Resource: http://localhost:50342/auth/login
+Client Browser Details:  Chrome 54.0
+Mobile Device: False
+Client IP: ::1
+Request Type: POST
+Exception Type: System.NullReferenceException
+Exception: Object reference not set to an instance of an object.
+Stack Trace: 
+   at JSONFirebirdWebServiceTest.Controllers.AuthenticateController.Post(Credentials submittedCred) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\AuthenticateController.cs:line 132
+
+********** 11/11/2016 5:53:37 AM **********
+Requested Resource: http://localhost:50342/auth/login
+Client Browser Details:  Chrome 54.0
+Mobile Device: False
+Client IP: ::1
+Request Type: POST
+Exception Type: System.NullReferenceException
+Exception: Object reference not set to an instance of an object.
+Stack Trace: 
+   at JSONFirebirdWebServiceTest.Controllers.AuthenticateController.Post(Credentials submittedCred) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\AuthenticateController.cs:line 132
+
+********** 11/11/2016 5:53:39 AM **********
+Requested Resource: http://localhost:50342/auth/login
+Client Browser Details:  Chrome 54.0
+Mobile Device: False
+Client IP: ::1
+Request Type: POST
+Exception Type: System.NullReferenceException
+Exception: Object reference not set to an instance of an object.
+Stack Trace: 
+   at JSONFirebirdWebServiceTest.Controllers.AuthenticateController.Post(Credentials submittedCred) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\AuthenticateController.cs:line 132
+

@@ -1,0 +1,13 @@
+********** 8/27/2016 11:14:50 PM **********
+Requested Resource: http://localhost:50342/api/settings/10017
+Client Browser Details:  Chrome 51.0
+Mobile Device: False
+Client IP: ::1
+Request Type: GET
+Exception Type: System.InvalidCastException
+Exception: The parameter passed was not a FbParameter.
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbParameterCollection.EnsureFbParameterType(Object value) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbParameterCollection.cs:line 356
+   at FirebirdSql.Data.FirebirdClient.FbParameterCollection.Add(Object value) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbParameterCollection.cs:line 170
+   at JSONFirebirdWebServiceTest.Controllers.SettingsController.Get(Int32 requestedid) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\SettingsController.cs:line 125
+

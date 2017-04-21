@@ -1,0 +1,100 @@
+********** 10/23/2016 10:28:40 PM **********
+Requested Resource: http://localhost:50342/api/Tags
+Client Browser Details:  Chrome 53.0
+Mobile Device: False
+Client IP: ::1
+Request Type: POST
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: violation of PRIMARY or UNIQUE KEY constraint "UNQ_TAG" on table "TAGS"
+Problematic key value is ("TAG" = 'ed')
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ProcessResponse(IResponse response) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 644
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 673
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadGenericResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 681
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.Execute() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version12\GdsStatement.cs:line 79
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1221
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 480
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: violation of PRIMARY or UNIQUE KEY constraint "UNQ_TAG" on table "TAGS"
+Problematic key value is ("TAG" = 'ed')
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 493
+   at JSONFirebirdWebServiceTest.Controllers.TagsController.Post(Tag newTag) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\TagsController.cs:line 234
+
+********** 10/23/2016 10:29:06 PM **********
+Requested Resource: http://localhost:50342/api/Tags
+Client Browser Details:  Chrome 53.0
+Mobile Device: False
+Client IP: ::1
+Request Type: POST
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: violation of PRIMARY or UNIQUE KEY constraint "UNQ_TAG" on table "TAGS"
+Problematic key value is ("TAG" = 'ed')
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ProcessResponse(IResponse response) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 644
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 673
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadGenericResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 681
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.Execute() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version12\GdsStatement.cs:line 79
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1221
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 480
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: violation of PRIMARY or UNIQUE KEY constraint "UNQ_TAG" on table "TAGS"
+Problematic key value is ("TAG" = 'ed')
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 493
+   at JSONFirebirdWebServiceTest.Controllers.TagsController.Post(Tag newTag) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\TagsController.cs:line 234
+
+********** 10/23/2016 10:29:39 PM **********
+Requested Resource: http://localhost:50342/api/Tags
+Client Browser Details:  Chrome 53.0
+Mobile Device: False
+Client IP: ::1
+Request Type: POST
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: violation of PRIMARY or UNIQUE KEY constraint "UNQ_TAG" on table "TAGS"
+Problematic key value is ("TAG" = 'ed')
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ProcessResponse(IResponse response) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 644
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 673
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadGenericResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 681
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.Execute() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version12\GdsStatement.cs:line 79
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1221
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 480
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: violation of PRIMARY or UNIQUE KEY constraint "UNQ_TAG" on table "TAGS"
+Problematic key value is ("TAG" = 'ed')
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 493
+   at JSONFirebirdWebServiceTest.Controllers.TagsController.Post(Tag newTag) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\TagsController.cs:line 234
+
+********** 10/23/2016 10:30:01 PM **********
+Requested Resource: http://localhost:50342/api/Tags
+Client Browser Details:  Chrome 53.0
+Mobile Device: False
+Client IP: ::1
+Request Type: POST
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: violation of PRIMARY or UNIQUE KEY constraint "UNQ_TAG" on table "TAGS"
+Problematic key value is ("TAG" = 'ed')
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ProcessResponse(IResponse response) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 644
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 673
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadGenericResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 681
+   at FirebirdSql.Data.Client.Managed.Version12.GdsStatement.Execute() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version12\GdsStatement.cs:line 79
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1221
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 480
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: violation of PRIMARY or UNIQUE KEY constraint "UNQ_TAG" on table "TAGS"
+Problematic key value is ("TAG" = 'ed')
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 493
+   at JSONFirebirdWebServiceTest.Controllers.TagsController.Post(Tag newTag) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\TagsController.cs:line 234
+
