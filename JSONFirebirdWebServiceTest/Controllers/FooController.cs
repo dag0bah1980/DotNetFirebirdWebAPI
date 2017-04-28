@@ -34,6 +34,8 @@ namespace JSONFirebirdWebServiceTest.Controllers
         // POST: auth/Foo
         public IHttpActionResult Post(Foo submittedFoo)
         {
+            var re = Request;
+            var headers = re.Headers;
 
             DBConnection fbconndetails = new DBConnection();
 
@@ -70,7 +72,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
                             result.Load(fbsqlreader);
                             status = "Success";
                             code = "200";
-                            message = "Good Foo Test!";
+                            message = "headers: " + headers;
                             fbtrans.Commit();
                         }
                         catch (Exception e)

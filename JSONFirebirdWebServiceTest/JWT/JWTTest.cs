@@ -11,8 +11,10 @@ namespace JSONFirebirdWebServiceTest.JWT
 {
     public class JWTTest
     {
-        public const string Secret = "856FECBA3B06519C8DDDBC80BB080553"; // your symetric
+        //This JWT implementation is from: http://stackoverflow.com/questions/40281050/jwt-authentication-for-asp-net-web-api
 
+        public const string Secret = "856FECBA3B06519C8DDDBC80BB080553"; // your symetric
+        //testing Git changes
         //reduce expireMinutes to test expired tokens on the client side.
         public string GenerateToken(string username, int expireMinutes = 2)
         {
