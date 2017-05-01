@@ -12,6 +12,7 @@ using FirebirdSql.Data.FirebirdClient;
 using JSONFirebirdWebServiceTest.Models;
 using JSONFirebirdWebServiceTest.JWT;
 using System.Configuration;
+using System.Web;
 
 namespace JSONFirebirdWebServiceTest.Controllers
 {
@@ -165,6 +166,53 @@ namespace JSONFirebirdWebServiceTest.Controllers
                                 token = jwtobject.GenerateToken(submittedCred.USERNAME);
                                 message = message + "Result is: " + result.Rows[0]["SUCCESS"];
                                 //add user to users table in DB to count number of active users.
+                                //I should break this out to another section of code...
+                                string addusersql = "insert into CURRENTUSERS (USERID, IPADDRESS, BROWSER)" + 
+                                    "VALUES" + 
+                                    "(@USERID, @IPADDRESS, @BROWSER)";
+
+                                //Connection insertconnection = new Connection(fbconndetails.DBHost, string.Concat(fbconndetails.DBPath, fbconndetails.DBFile), Convert.ToInt32(fbconndetails.DBPort), fbconndetails.DBUser, fbconndetails.DBPassword, fbconndetails.DBConnectionLifeTime, fbconndetails.DBPooling, fbconndetails.DBMinPoolSize, fbconndetails.DBMaxPoolSize);
+                                //insertconnection.fbconnect.Open();
+                                
+                                FbParameter useridParam = new FbParameter("@USERID", FbDbType.BigInt);
+                                FbParameter ipaddressParam = new FbParameter("@IPADDRESS", FbDbType.VarChar);
+                                FbParameter browserParam = new FbParameter("@BROWSER", FbDbType.VarChar);
+
+
+                                //From : http://stackoverflow.com/questions/17306038/how-would-you-detect-the-current-browser-in-an-api-controller
+                                HttpRequestMessage currentRequest = this.Request;                                
+                                System.Net.Http.Headers.HttpHeaderValueCollection<System.Net.Http.Headers.ProductInfoHeaderValue> userAgentHeader = currentRequest.Headers.UserAgent;
+
+
+                                //For IP: http://stackoverflow.com/questions/1907195/how-to-get-ip-address
+                                String ip = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                                
+
+                                if (string.IsNullOrEmpty(ip))
+                                {
+                                    ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                                }
+                                else
+                                { // Using X-Forwarded-For last address
+                                    ip = ip.Split(',')
+                                           .Last()
+                                           .Trim();
+                                }
+
+                                var ipaddress = ip;
+
+
+                                useridParam.Value = result.Rows[0]["RESULTCODE"];
+                                ipaddressParam.Value = ipaddress;
+                                browserParam.Value = userAgentHeader;                              
+
+                                FbCommand fbinsertcmd = new FbCommand(addusersql, selectconnection.fbconnect, fbtrans);
+                                fbinsertcmd.Parameters.Add(useridParam);
+                                fbinsertcmd.Parameters.Add(ipaddressParam);
+                                fbinsertcmd.Parameters.Add(browserParam);                               
+
+                                fbinsertcmd.ExecuteNonQuery();                          
+
                             }
                             
                             fbtrans.Commit();
