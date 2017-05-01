@@ -160,7 +160,13 @@ namespace JSONFirebirdWebServiceTest.Controllers
                             status = "Success";
                             code = "200";
                             message = "All Good!";
-                            token = jwtobject.GenerateToken(submittedCred.USERNAME);
+                            if (result.Rows[0]["SUCCESS"].Equals(true))
+                            {
+                                token = jwtobject.GenerateToken(submittedCred.USERNAME);
+                                message = message + "Result is: " + result.Rows[0]["SUCCESS"];
+                                //add user to users table in DB to count number of active users.
+                            }
+                            
                             fbtrans.Commit();
                         }
                         catch (Exception e)
