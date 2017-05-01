@@ -163,13 +163,12 @@ namespace JSONFirebirdWebServiceTest.Controllers
                             message = "All Good!";
                             if (result.Rows[0]["SUCCESS"].Equals(true))
                             {
-                                token = jwtobject.GenerateToken(submittedCred.USERNAME);
-                                message = message + "Result is: " + result.Rows[0]["SUCCESS"];
+                                
                                 //add user to users table in DB to count number of active users.
                                 //I should break this out to another section of code...
-                                string addusersql = "insert into CURRENTUSERS (USERID, IPADDRESS, BROWSER)" + 
+                                string addusersql = "insert into CURRENTUSERS (USERID, IPADDRESS, BROWSER, SESSIONKEY)" + 
                                     "VALUES" + 
-                                    "(@USERID, @IPADDRESS, @BROWSER)";
+                                    "(@USERID, @IPADDRESS, @BROWSER, @SESSIONKEY)";
 
                                 //Connection insertconnection = new Connection(fbconndetails.DBHost, string.Concat(fbconndetails.DBPath, fbconndetails.DBFile), Convert.ToInt32(fbconndetails.DBPort), fbconndetails.DBUser, fbconndetails.DBPassword, fbconndetails.DBConnectionLifeTime, fbconndetails.DBPooling, fbconndetails.DBMinPoolSize, fbconndetails.DBMaxPoolSize);
                                 //insertconnection.fbconnect.Open();
@@ -177,6 +176,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
                                 FbParameter useridParam = new FbParameter("@USERID", FbDbType.BigInt);
                                 FbParameter ipaddressParam = new FbParameter("@IPADDRESS", FbDbType.VarChar);
                                 FbParameter browserParam = new FbParameter("@BROWSER", FbDbType.VarChar);
+                                FbParameter sessionkeyParam = new FbParameter("@SESSIONKEY", FbDbType.VarChar);
 
 
                                 //From : http://stackoverflow.com/questions/17306038/how-would-you-detect-the-current-browser-in-an-api-controller
@@ -184,9 +184,12 @@ namespace JSONFirebirdWebServiceTest.Controllers
                                 System.Net.Http.Headers.HttpHeaderValueCollection<System.Net.Http.Headers.ProductInfoHeaderValue> userAgentHeader = currentRequest.Headers.UserAgent;
 
 
-                                //For IP: http://stackoverflow.com/questions/1907195/how-to-get-ip-address
+                                //For IP: http://stackoverflow.com/questions/1907195/how-to-get-ip-address                             
                                 String ip = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-                                
+
+                                //For list of server variables: https://msdn.microsoft.com/en-us/library/ms524602.aspx
+                                String browser = HttpContext.Current.Request.ServerVariables["HTTP_USER_AGENT"];
+
 
                                 if (string.IsNullOrEmpty(ip))
                                 {
@@ -201,18 +204,24 @@ namespace JSONFirebirdWebServiceTest.Controllers
 
                                 var ipaddress = ip;
 
+                                string sessionkey = Guid.NewGuid().ToString();
 
                                 useridParam.Value = result.Rows[0]["RESULTCODE"];
                                 ipaddressParam.Value = ipaddress;
-                                browserParam.Value = userAgentHeader;                              
+                                browserParam.Value = browser;
+                                sessionkeyParam.Value =  sessionkey;
 
                                 FbCommand fbinsertcmd = new FbCommand(addusersql, selectconnection.fbconnect, fbtrans);
                                 fbinsertcmd.Parameters.Add(useridParam);
                                 fbinsertcmd.Parameters.Add(ipaddressParam);
-                                fbinsertcmd.Parameters.Add(browserParam);                               
+                                fbinsertcmd.Parameters.Add(browserParam);
+                                fbinsertcmd.Parameters.Add(sessionkeyParam);
 
-                                fbinsertcmd.ExecuteNonQuery();                          
+                                fbinsertcmd.ExecuteNonQuery();
 
+                                token = jwtobject.GenerateToken(submittedCred.USERNAME);
+                                //message = message + "Result is: " + result.Rows[0]["SUCCESS"];
+                                message = sessionkey;
                             }
                             
                             fbtrans.Commit();
@@ -257,6 +266,107 @@ namespace JSONFirebirdWebServiceTest.Controllers
             }
         }
 
+        [Route("logout")]
+        [HttpPost]
+        public IHttpActionResult Post(LogoutCred submittedLogoutCred)
+        {
+            DBConnection fbconndetails = new DBConnection();
+
+            Connection selectconnection = new Connection(fbconndetails.DBHost, string.Concat(fbconndetails.DBPath, fbconndetails.DBFile), Convert.ToInt32(fbconndetails.DBPort), fbconndetails.DBUser, fbconndetails.DBPassword, fbconndetails.DBConnectionLifeTime, fbconndetails.DBPooling, fbconndetails.DBMinPoolSize, fbconndetails.DBMaxPoolSize);
+            DataTable result = new DataTable();
+
+            JSONObject jbuilder = new JSONObject();
+            JSONObject.MetaDetails mbuilder = new JSONObject.MetaDetails();
+
+            string status = "";
+            string code = "";
+            string message = "";
+            string token = "";
+            string appversion = "";
+
+            JWTTest jwtobject = new JWTTest();
+
+            string sqlcmd = "select * from logout(@USERNAME,@SESSIONKEY)";
+
+            using (selectconnection.fbconnect)
+            {
+
+                try
+                {
+                    selectconnection.fbconnect.Open();
+                    FbTransaction fbtrans = selectconnection.fbconnect.BeginTransaction();
+                    FbParameter usernameParam = new FbParameter("@USERNAME", FbDbType.VarChar);
+                    usernameParam.Value = submittedLogoutCred.USERNAME;
+
+                    FbParameter sessionkeyParam = new FbParameter("@SESSIONKEY", FbDbType.VarChar);
+                    sessionkeyParam.Value = submittedLogoutCred.SESSIONKEY;
+
+                    FbCommand fbcmd = new FbCommand(sqlcmd, selectconnection.fbconnect, fbtrans);
+                    fbcmd.Parameters.Add(usernameParam);
+                    fbcmd.Parameters.Add(sessionkeyParam);
+
+
+                    using (FbDataReader fbsqlreader = fbcmd.ExecuteReader())
+                    {
+                        try
+                        {
+                            result.Load(fbsqlreader);
+                            if (result.Rows[0]["SUCCESS"].Equals(true))
+                            {
+                                status = "Success";
+                                code = "200";
+                                message = "All Good!";
+                            }
+                            else
+                            {
+                                status = "Odd Status: No matching username / sessionkey";
+                                code = "200";
+                                message = "Odd Status: No matching username / sessionkey";
+                            }
+                            fbtrans.Commit();
+                        }
+                        catch (Exception e)
+                        {
+                            ExceptionsLogByFile logger = new ExceptionsLogByFile();
+                            logger.LogException(e);
+                            status = "Fail";
+                            code = "500";
+                            message = "Internal Server Error";
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    ExceptionsLogByFile logger = new ExceptionsLogByFile();
+                    logger.LogException(ex);
+                    status = "Fail";
+                    code = "503";
+                    message = "Internal Server Error - Cannot access database";
+                }
+                finally
+                {
+
+                }
+                selectconnection.fbconnect.Close();
+
+
+                mbuilder.status = status;
+                mbuilder.code = code;
+                mbuilder.message = message;
+                mbuilder.jwttoken = token;
+                mbuilder.appversion = ConfigurationManager.AppSettings["APIVersion"];
+
+                jbuilder.Meta = mbuilder;
+
+                jbuilder.Data = result;
+
+                return Json(jbuilder);
+            }
+        }
+
+
+
         // GET: api/Authenticate/5
         public string Get(int id)
         {
@@ -264,9 +374,9 @@ namespace JSONFirebirdWebServiceTest.Controllers
         }
 
         // POST: api/Authenticate
-        public void Post([FromBody]string value)
-        {
-        }
+        //public void Post([FromBody]string value)
+        //{
+        //}
 
         // PUT: api/Authenticate/5
         public void Put(int id, [FromBody]string value)

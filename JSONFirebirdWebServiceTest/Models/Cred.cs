@@ -10,4 +10,11 @@ namespace JSONFirebirdWebServiceTest.Models
         public string USERNAME;
         public string PASSWORD;
     }
+
+    public class LogoutCred
+    {
+        public string USERNAME;
+        public string SESSIONKEY;
+    }
+
 }
