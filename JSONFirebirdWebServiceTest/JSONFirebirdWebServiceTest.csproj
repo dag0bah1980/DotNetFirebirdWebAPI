@@ -130,6 +130,7 @@
     <Compile Include="Connect\Connection.cs" />
     <Compile Include="Connect\DBConnectionController.cs" />
     <Compile Include="Controllers\AuthenticateController.cs" />
+    <Compile Include="Controllers\CurrentUsersController.cs" />
     <Compile Include="Controllers\FooController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />

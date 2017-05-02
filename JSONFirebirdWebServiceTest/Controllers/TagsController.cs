@@ -19,7 +19,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
     {
         [Route("Tags")]
         [HttpGet]
-        // GET: api/Users
+        // GET: 
         public IHttpActionResult Get()
         {
             DBConnection fbconndetails = new DBConnection();
