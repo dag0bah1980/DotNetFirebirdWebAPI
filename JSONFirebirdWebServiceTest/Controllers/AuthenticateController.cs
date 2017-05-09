@@ -166,9 +166,9 @@ namespace JSONFirebirdWebServiceTest.Controllers
                                 
                                 //add user to users table in DB to count number of active users.
                                 //I should break this out to another section of code...
-                                string addusersql = "insert into CURRENTUSERS (USERID, IPADDRESS, BROWSER, SESSIONKEY)" + 
+                                string addusersql = "insert into CURRENTUSERS (USERID, IPADDRESS, BROWSER, SESSIONKEY, STATUS)" + 
                                     "VALUES" + 
-                                    "(@USERID, @IPADDRESS, @BROWSER, @SESSIONKEY)";
+                                    "(@USERID, @IPADDRESS, @BROWSER, @SESSIONKEY, 1)";
 
                                 //Connection insertconnection = new Connection(fbconndetails.DBHost, string.Concat(fbconndetails.DBPath, fbconndetails.DBFile), Convert.ToInt32(fbconndetails.DBPort), fbconndetails.DBUser, fbconndetails.DBPassword, fbconndetails.DBConnectionLifeTime, fbconndetails.DBPooling, fbconndetails.DBMinPoolSize, fbconndetails.DBMaxPoolSize);
                                 //insertconnection.fbconnect.Open();
@@ -177,6 +177,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
                                 FbParameter ipaddressParam = new FbParameter("@IPADDRESS", FbDbType.VarChar);
                                 FbParameter browserParam = new FbParameter("@BROWSER", FbDbType.VarChar);
                                 FbParameter sessionkeyParam = new FbParameter("@SESSIONKEY", FbDbType.VarChar);
+                                //FbParameter statusParam = new FbParameter("@STATUS", FbDbType.Integer);
 
 
                                 //From : http://stackoverflow.com/questions/17306038/how-would-you-detect-the-current-browser-in-an-api-controller

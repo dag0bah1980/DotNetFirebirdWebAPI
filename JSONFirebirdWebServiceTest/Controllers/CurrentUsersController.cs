@@ -93,7 +93,79 @@ namespace JSONFirebirdWebServiceTest.Controllers
                 return Json(jbuilder);
             }
         }
-        
+
+
+        [Route("CurrentUsers/{updatedId}")]
+        [HttpPut]
+        // PUT: api/CurrentUsers/5
+        public IHttpActionResult LogicalDelete(int updatedId)
+        {
+            DBConnection fbconndetails = new DBConnection();
+
+            Connection selectconnection = new Connection(fbconndetails.DBHost, string.Concat(fbconndetails.DBPath, fbconndetails.DBFile), Convert.ToInt32(fbconndetails.DBPort), fbconndetails.DBUser, fbconndetails.DBPassword, fbconndetails.DBConnectionLifeTime, fbconndetails.DBPooling, fbconndetails.DBMinPoolSize, fbconndetails.DBMaxPoolSize);
+
+            JSONObject jbuilder = new JSONObject();
+            JSONObject.MetaDetails mbuilder = new JSONObject.MetaDetails();
+
+            string status = "";
+            string code = "";
+            string message = "";
+
+            string sqlcmd = "update currentusers set " +
+                "STATUS=0 " +
+                "WHERE ID = @ID";
+
+
+            using (selectconnection.fbconnect)
+            {
+
+                try
+                {
+                    selectconnection.fbconnect.Open();
+                    FbTransaction fbtrans = selectconnection.fbconnect.BeginTransaction();
+                    FbParameter idParam = new FbParameter("@ID", FbDbType.BigInt);
+                    FbParameter statusParam = new FbParameter("@STATUS", FbDbType.Integer);
+
+
+                    idParam.Value = updatedId;
+                    statusParam.Value = DateTime.Now.ToString();
+
+
+                    FbCommand fbcmd = new FbCommand(sqlcmd, selectconnection.fbconnect, fbtrans);
+                    fbcmd.Parameters.Add(idParam);
+                    fbcmd.Parameters.Add(statusParam);
+
+
+
+                    fbcmd.ExecuteNonQuery();
+                    fbtrans.Commit();
+                    status = "Success";
+                    code = "200";
+                    message = "All Good!";
+                }
+                catch (Exception ex)
+                {
+                    ExceptionsLogByFile logger = new ExceptionsLogByFile();
+                    logger.LogException(ex);
+                    status = "Fail";
+                    code = "503";
+                    message = "Internal Server Error - Cannot access database";
+                }
+                finally
+                {
+                    selectconnection.fbconnect.Close();
+                }
+
+                mbuilder.status = status;
+                mbuilder.code = code;
+                mbuilder.message = message;
+
+                jbuilder.Meta = mbuilder;
+
+                return Json(jbuilder);
+            }
+        }
+
         // GET: api/CurrentUsers
         //public IEnumerable<string> Get()
         //{
@@ -112,9 +184,9 @@ namespace JSONFirebirdWebServiceTest.Controllers
         }
 
         // PUT: api/CurrentUsers/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
         // DELETE: api/CurrentUsers/5
         public void Delete(int id)
