@@ -537,7 +537,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
             }
         }
 
-        [Route("Tags/Deactivate/{updatedId}")]
+        [Route("Tags/Activate/{updatedId}")]
         [HttpPut]
         // PUT: api/Tags/Deactivate/5
         public IHttpActionResult Activate(int updatedId, [FromBody]Tag updateTag)
