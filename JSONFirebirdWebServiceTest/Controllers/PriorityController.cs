@@ -15,9 +15,9 @@ using JSONFirebirdWebServiceTest.Definitions;
 namespace JSONFirebirdWebServiceTest.Controllers
 {
     [RoutePrefix("api")]
-    public class ProjectsController : ApiController
+    public class PriorityController : ApiController
     {
-        [Route("Projects")]
+        [Route("Priorities")]
         [HttpGet]
         // GET: 
         public IHttpActionResult Get()
@@ -34,7 +34,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
             string code = "";
             string message = "";
 
-            string sqlcmd = "select * from projects";
+            string sqlcmd = "select * from priority";
 
             using (selectconnection.fbconnect)
             {
@@ -93,7 +93,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
             }
         }
 
-        [Route("Projects/{requestedid}")]
+        [Route("Priorities/{requestedid}")]
         [HttpGet]
         // GET: api/Users/5
         public IHttpActionResult Get(int requestedid)
@@ -110,7 +110,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
             string code = "";
             string message = "";
 
-            string sqlcmd = "select * from projects where id = @requestedid";
+            string sqlcmd = "select * from priority where id = @requestedid";
 
             using (selectconnection.fbconnect)
             {
@@ -174,7 +174,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
             }
         }
 
-        [Route("Projects/CodeMatch/{requestedcode}")]
+        [Route("Priorities/CodeMatch/{requestedcode}")]
         [HttpGet]
         // GET: api/Users/5
         public IHttpActionResult Get(string requestedcode)
@@ -255,10 +255,10 @@ namespace JSONFirebirdWebServiceTest.Controllers
             }
         }
 
-        [Route("Projects")]
+        [Route("Priorities")]
         [HttpPost]
         // POST: api/Tags
-        public IHttpActionResult Post(Project newProject)
+        public IHttpActionResult Post(Priority newPriority)
         {
             DBConnection fbconndetails = new DBConnection();
 
@@ -271,9 +271,10 @@ namespace JSONFirebirdWebServiceTest.Controllers
             string code = "";
             string message = "";
 
-            string sqlcmd = "insert into projects (ISACTIVE,ISDELETED,DESCRIPTION, PROJECTTYPE, TIER, PRIORITYID, CREATEDBY, ASSIGNEDTO, RECURRING, DUEDATE, PARENTID)" +
+            string sqlcmd = "insert into priority" +
+                "(ISACTIVE,ISDELETED,PRIORITYCODE,PRIORITYNAME,DESCRIPTION,ORDERVALUE)" +
                 "VALUES " +
-                "(@ISACTIVE,@ISDELETED,@DESCRIPTION, @PROJECTTYPE, @TIER, @PRIORITYID, @CREATEDBY, @ASSIGNEDTO, @RECURRING, @DUEDATE, @PARENTID)";
+                "(@ISACTIVE,@ISDELETED,@PRIORITYCODE,@PRIORITYNAME,@DESCRIPTION,@ORDERVALUE)";
 
 
             using (selectconnection.fbconnect)
@@ -285,40 +286,26 @@ namespace JSONFirebirdWebServiceTest.Controllers
                     FbTransaction fbtrans = selectconnection.fbconnect.BeginTransaction();
                     FbParameter isactiveParam = new FbParameter("@ISACTIVE", FbDbType.Boolean);
                     FbParameter isdeletedParam = new FbParameter("@ISDELETED", FbDbType.Boolean);
+                    FbParameter prioritycodeParam = new FbParameter("@PRIORITYCODE", FbDbType.VarChar);
+                    FbParameter prioritynameParam = new FbParameter("@PRIORITYNAME", FbDbType.VarChar);
                     FbParameter descriptionParam = new FbParameter("@DESCRIPTION", FbDbType.VarChar);
-                    FbParameter projecttypeParam = new FbParameter("@PROJECTTYPE", FbDbType.VarChar);
-                    FbParameter tierParam = new FbParameter("@TIER", FbDbType.BigInt);
-                    FbParameter priorityidParam = new FbParameter("@PRIORITYID", FbDbType.BigInt);
-                    FbParameter createdbyParam = new FbParameter("@CREATEDBY", FbDbType.BigInt);
-                    FbParameter assignedtoParam = new FbParameter("@ASSIGNEDTO", FbDbType.BigInt);
-                    FbParameter recurringParam = new FbParameter("@RECURRING", FbDbType.Boolean);
-                    FbParameter duedateParam = new FbParameter("@DUEDATE", FbDbType.TimeStamp);
-                    FbParameter parentidParam = new FbParameter("@PARENTID", FbDbType.BigInt);
-                    
-                    isactiveParam.Value = newProject.ISACTIVE;
-                    isdeletedParam.Value = newProject.ISDELETED;
-                    descriptionParam.Value = newProject.DESCRIPTION;
-                    projecttypeParam.Value = newProject.PROJECTTYPE;
-                    tierParam.Value = newProject.TIER;
-                    priorityidParam.Value = newProject.PRIORITYID;
-                    createdbyParam.Value = newProject.CREATEDBY;
-                    assignedtoParam.Value = newProject.ASSIGNEDTO;
-                    recurringParam.Value = newProject.RECURRING;
-                    duedateParam.Value = newProject.DUEDATE;
-                    parentidParam.Value = newProject.PARENTID;
+                    FbParameter ordervalueParam = new FbParameter("@ORDERVALUE", FbDbType.Integer);
+
+
+                    isactiveParam.Value = newPriority.ISACTIVE;
+                    isdeletedParam.Value = newPriority.ISDELETED;
+                    prioritycodeParam.Value = newPriority.PRIORITYCODE;
+                    prioritynameParam.Value = newPriority.PRIORITYNAME;
+                    descriptionParam.Value = newPriority.DESCRIPTION;
+                    ordervalueParam.Value = newPriority.ORDERVALUE;
 
                     FbCommand fbcmd = new FbCommand(sqlcmd, selectconnection.fbconnect, fbtrans);
                     fbcmd.Parameters.Add(isactiveParam);
                     fbcmd.Parameters.Add(isdeletedParam);
+                    fbcmd.Parameters.Add(prioritycodeParam);
+                    fbcmd.Parameters.Add(prioritynameParam);
                     fbcmd.Parameters.Add(descriptionParam);
-                    fbcmd.Parameters.Add(projecttypeParam);
-                    fbcmd.Parameters.Add(tierParam);
-                    fbcmd.Parameters.Add(priorityidParam);
-                    fbcmd.Parameters.Add(createdbyParam);
-                    fbcmd.Parameters.Add(assignedtoParam);
-                    fbcmd.Parameters.Add(recurringParam);
-                    fbcmd.Parameters.Add(duedateParam);
-                    fbcmd.Parameters.Add(parentidParam);
+                    fbcmd.Parameters.Add(ordervalueParam);
 
                     fbcmd.ExecuteNonQuery();
                     fbtrans.Commit();
@@ -358,10 +345,10 @@ namespace JSONFirebirdWebServiceTest.Controllers
             }
         }
 
-        [Route("Projects/Update/{updatedId}")]
+        [Route("Priorities/Update/{updatedId}")]
         [HttpPut]
         // PUT: api/Tags/Update/5
-        public IHttpActionResult Update(int updatedId, [FromBody]Project updatedProject)
+        public IHttpActionResult Update(int updatedId, [FromBody]Priority updatedPriority)
         {
             DBConnection fbconndetails = new DBConnection();
 
@@ -374,12 +361,12 @@ namespace JSONFirebirdWebServiceTest.Controllers
             string code = "";
             string message = "";
 
-            string updatedBodyProjectDescription = updatedProject.DESCRIPTION;
+            string updatedPriorityCode = updatedPriority.PRIORITYCODE;
 
-            string sqlcmd = "update tag set " +
+            string sqlcmd = "update priority set " +
                 "WHERE " +
                 "ID = @ID and" +
-                "Description = @DESCRIPTION";
+                "Prioritycode = @PRIORITYCODE";
 
 
             using (selectconnection.fbconnect)
@@ -390,14 +377,14 @@ namespace JSONFirebirdWebServiceTest.Controllers
                     selectconnection.fbconnect.Open();
                     FbTransaction fbtrans = selectconnection.fbconnect.BeginTransaction();
                     FbParameter idParam = new FbParameter("@ID", FbDbType.BigInt);
-                    FbParameter descriptionParam = new FbParameter("@DESCRIPTION", FbDbType.VarChar);
+                    FbParameter prioritycodeParam = new FbParameter("@PRIORITYCODE", FbDbType.VarChar);
 
                     idParam.Value = updatedId;
-                    descriptionParam.Value = updatedBodyProjectDescription;
+                    prioritycodeParam.Value = updatedPriorityCode;
 
                     FbCommand fbcmd = new FbCommand(sqlcmd, selectconnection.fbconnect, fbtrans);
                     fbcmd.Parameters.Add(idParam);
-                    fbcmd.Parameters.Add(descriptionParam);
+                    fbcmd.Parameters.Add(prioritycodeParam);
 
                     fbcmd.ExecuteNonQuery();
                     fbtrans.Commit();
@@ -429,10 +416,10 @@ namespace JSONFirebirdWebServiceTest.Controllers
         }
 
 
-        [Route("Projects/Delete/{updatedId}")]
+        [Route("Priorities/Delete/{updatedId}")]
         [HttpPut]
         // PUT: api/Tags/Delete/5
-        public IHttpActionResult LogicalDelete(int updatedId, [FromBody]Project updateProject)
+        public IHttpActionResult LogicalDelete(int updatedId, [FromBody]Priority updatePriority)
         {
             DBConnection fbconndetails = new DBConnection();
 
@@ -445,11 +432,11 @@ namespace JSONFirebirdWebServiceTest.Controllers
             string code = "";
             string message = "";
 
-            string sqlcmd = "update projects set " +
+            string sqlcmd = "update priority set " +
                 "ISDELETED=true " +
                 " WHERE " +
                 " ID = @ID and " +
-                " DESCRIPTION = @DESCRIPTION";
+                " PRIORITYCODE = @PRIORITYCODE";
 
 
             using (selectconnection.fbconnect)
@@ -460,14 +447,14 @@ namespace JSONFirebirdWebServiceTest.Controllers
                     selectconnection.fbconnect.Open();
                     FbTransaction fbtrans = selectconnection.fbconnect.BeginTransaction();
                     FbParameter idParam = new FbParameter("@ID", FbDbType.BigInt);
-                    FbParameter descriptionParam = new FbParameter("@DESCRIPTION", FbDbType.VarChar);
+                    FbParameter prioritycodeParam = new FbParameter("@PRIORITYCODE", FbDbType.VarChar);
 
                     idParam.Value = updatedId;
-                    descriptionParam.Value = updateProject.DESCRIPTION;
+                    prioritycodeParam.Value = updatePriority.PRIORITYCODE;
 
                     FbCommand fbcmd = new FbCommand(sqlcmd, selectconnection.fbconnect, fbtrans);
                     fbcmd.Parameters.Add(idParam);
-                    fbcmd.Parameters.Add(descriptionParam);
+                    fbcmd.Parameters.Add(prioritycodeParam);
 
                     fbcmd.ExecuteNonQuery();
                     fbtrans.Commit();
@@ -498,10 +485,10 @@ namespace JSONFirebirdWebServiceTest.Controllers
             }
         }
 
-        [Route("Projects/Deactivate/{updatedId}")]
+        [Route("Priorities/Deactivate/{updatedId}")]
         [HttpPut]
         // PUT: api/Tags/Deactivate/5
-        public IHttpActionResult Deactivate(int updatedId, [FromBody]Project updateProject)
+        public IHttpActionResult Deactivate(int updatedId, [FromBody]Priority updatePriority)
         {
             DBConnection fbconndetails = new DBConnection();
 
@@ -514,11 +501,11 @@ namespace JSONFirebirdWebServiceTest.Controllers
             string code = "";
             string message = "";
 
-            string sqlcmd = "update projects set " +
+            string sqlcmd = "update priority set " +
                 "ISACTIVE=false " +
                 "WHERE " +
                 " ID = @ID and " +
-                " DESCRIPTION = @DESCRIPTION";
+                " PRIORITYCODE = @PRIORITYCODE";
 
             using (selectconnection.fbconnect)
             {
@@ -528,14 +515,14 @@ namespace JSONFirebirdWebServiceTest.Controllers
                     selectconnection.fbconnect.Open();
                     FbTransaction fbtrans = selectconnection.fbconnect.BeginTransaction();
                     FbParameter idParam = new FbParameter("@ID", FbDbType.BigInt);
-                    FbParameter descriptionParam = new FbParameter("@DESCRIPTION", FbDbType.VarChar);
+                    FbParameter prioritycodeParam = new FbParameter("@PRIORITYCODE", FbDbType.VarChar);
 
                     idParam.Value = updatedId;
-                    descriptionParam.Value = updateProject.DESCRIPTION;
+                    prioritycodeParam.Value = updatePriority.PRIORITYCODE;
 
                     FbCommand fbcmd = new FbCommand(sqlcmd, selectconnection.fbconnect, fbtrans);
                     fbcmd.Parameters.Add(idParam);
-                    fbcmd.Parameters.Add(descriptionParam);
+                    fbcmd.Parameters.Add(prioritycodeParam);
 
                     fbcmd.ExecuteNonQuery();
                     fbtrans.Commit();
@@ -567,10 +554,10 @@ namespace JSONFirebirdWebServiceTest.Controllers
         }
 
 
-        [Route("Projects/UnDelete/{updatedId}")]
+        [Route("Priorities/UnDelete/{updatedId}")]
         [HttpPut]
         // PUT: api/Tags/Delete/5
-        public IHttpActionResult LogicalUndelete(int updatedId, [FromBody]Project updateProject)
+        public IHttpActionResult LogicalUndelete(int updatedId, [FromBody]Priority updatePriority)
         {
             DBConnection fbconndetails = new DBConnection();
 
@@ -583,11 +570,11 @@ namespace JSONFirebirdWebServiceTest.Controllers
             string code = "";
             string message = "";
 
-            string sqlcmd = "update projects set " +
+            string sqlcmd = "update priority set " +
                 "ISDELETED=false " +
                 " WHERE " +
                 " ID = @ID and " +
-                " DESCRIPTION = @DESCRIPTION";
+                " PRIORITYCODE = @PRIORITYCODE";
 
 
             using (selectconnection.fbconnect)
@@ -598,14 +585,14 @@ namespace JSONFirebirdWebServiceTest.Controllers
                     selectconnection.fbconnect.Open();
                     FbTransaction fbtrans = selectconnection.fbconnect.BeginTransaction();
                     FbParameter idParam = new FbParameter("@ID", FbDbType.BigInt);
-                    FbParameter descriptionParam = new FbParameter("@DESCRIPTION", FbDbType.VarChar);
+                    FbParameter prioritycodeParam = new FbParameter("@PRIORITYCODE", FbDbType.VarChar);
 
                     idParam.Value = updatedId;
-                    descriptionParam.Value = updateProject.DESCRIPTION;
+                    prioritycodeParam.Value = updatePriority.PRIORITYCODE;
 
                     FbCommand fbcmd = new FbCommand(sqlcmd, selectconnection.fbconnect, fbtrans);
                     fbcmd.Parameters.Add(idParam);
-                    fbcmd.Parameters.Add(descriptionParam);
+                    fbcmd.Parameters.Add(prioritycodeParam);
 
                     fbcmd.ExecuteNonQuery();
                     fbtrans.Commit();
@@ -636,10 +623,10 @@ namespace JSONFirebirdWebServiceTest.Controllers
             }
         }
 
-        [Route("Projects/Activate/{updatedId}")]
+        [Route("Priorities/Activate/{updatedId}")]
         [HttpPut]
         // PUT: api/Tags/Deactivate/5
-        public IHttpActionResult Activate(int updatedId, [FromBody]Project updateProject)
+        public IHttpActionResult Activate(int updatedId, [FromBody]Priority updatePriority)
         {
             DBConnection fbconndetails = new DBConnection();
 
@@ -652,11 +639,11 @@ namespace JSONFirebirdWebServiceTest.Controllers
             string code = "";
             string message = "";
 
-            string sqlcmd = "update projects set " +
+            string sqlcmd = "update priority set " +
                 "ISACTIVE=true " +
                 "WHERE " +
                 " ID = @ID and " +
-                " DESCRIPTION = @DESCRIPTION";
+                " PRIORITYCODE = @PRIORITYCODE";
 
             using (selectconnection.fbconnect)
             {
@@ -666,14 +653,14 @@ namespace JSONFirebirdWebServiceTest.Controllers
                     selectconnection.fbconnect.Open();
                     FbTransaction fbtrans = selectconnection.fbconnect.BeginTransaction();
                     FbParameter idParam = new FbParameter("@ID", FbDbType.BigInt);
-                    FbParameter descriptionParam = new FbParameter("@DESCRIPTION", FbDbType.VarChar);
+                    FbParameter prioritycodeParam = new FbParameter("@PRIORITYCODE", FbDbType.VarChar);
 
                     idParam.Value = updatedId;
-                    descriptionParam.Value = updateProject.DESCRIPTION;
+                    prioritycodeParam.Value = updatePriority.PRIORITYCODE;
 
                     FbCommand fbcmd = new FbCommand(sqlcmd, selectconnection.fbconnect, fbtrans);
                     fbcmd.Parameters.Add(idParam);
-                    fbcmd.Parameters.Add(descriptionParam);
+                    fbcmd.Parameters.Add(prioritycodeParam);
 
                     fbcmd.ExecuteNonQuery();
                     fbtrans.Commit();
@@ -709,6 +696,5 @@ namespace JSONFirebirdWebServiceTest.Controllers
         }
 
     }
-
 }
 
