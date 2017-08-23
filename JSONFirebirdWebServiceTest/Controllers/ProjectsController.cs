@@ -271,9 +271,9 @@ namespace JSONFirebirdWebServiceTest.Controllers
             string code = "";
             string message = "";
 
-            string sqlcmd = "insert into projects (ISACTIVE,ISDELETED,DESCRIPTION, PROJECTTYPE, TIER, PRIORITYID, CREATEDBY, ASSIGNEDTO, RECURRING, DUEDATE, PARENTID)" +
+            string sqlcmd = "insert into projects (ISACTIVE,ISDELETED,DESCRIPTION, PROJECTTYPE, TIER, PRIORITYID, CREATEDBY, ASSIGNEDTO, RECURRING, DUEDATE, PARENTID, STATUSID)" +
                 "VALUES " +
-                "(@ISACTIVE,@ISDELETED,@DESCRIPTION, @PROJECTTYPE, @TIER, @PRIORITYID, @CREATEDBY, @ASSIGNEDTO, @RECURRING, @DUEDATE, @PARENTID)";
+                "(@ISACTIVE,@ISDELETED,@DESCRIPTION, @PROJECTTYPE, @TIER, @PRIORITYID, @CREATEDBY, @ASSIGNEDTO, @RECURRING, @DUEDATE, @PARENTID, @STATUSID)";
 
 
             using (selectconnection.fbconnect)
@@ -294,7 +294,8 @@ namespace JSONFirebirdWebServiceTest.Controllers
                     FbParameter recurringParam = new FbParameter("@RECURRING", FbDbType.Boolean);
                     FbParameter duedateParam = new FbParameter("@DUEDATE", FbDbType.TimeStamp);
                     FbParameter parentidParam = new FbParameter("@PARENTID", FbDbType.BigInt);
-                    
+                    FbParameter statusidParam = new FbParameter("@STATUSID", FbDbType.BigInt);
+
                     isactiveParam.Value = newProject.ISACTIVE;
                     isdeletedParam.Value = newProject.ISDELETED;
                     descriptionParam.Value = newProject.DESCRIPTION;
@@ -306,6 +307,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
                     recurringParam.Value = newProject.RECURRING;
                     duedateParam.Value = newProject.DUEDATE;
                     parentidParam.Value = newProject.PARENTID;
+                    statusidParam.Value = newProject.STATUSID;
 
                     FbCommand fbcmd = new FbCommand(sqlcmd, selectconnection.fbconnect, fbtrans);
                     fbcmd.Parameters.Add(isactiveParam);
@@ -319,6 +321,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
                     fbcmd.Parameters.Add(recurringParam);
                     fbcmd.Parameters.Add(duedateParam);
                     fbcmd.Parameters.Add(parentidParam);
+                    fbcmd.Parameters.Add(statusidParam);
 
                     fbcmd.ExecuteNonQuery();
                     fbtrans.Commit();
@@ -376,7 +379,7 @@ namespace JSONFirebirdWebServiceTest.Controllers
 
             string updatedBodyProjectDescription = updatedProject.DESCRIPTION;
 
-            string sqlcmd = "update tag set " +
+            string sqlcmd = "update projects set " +
                 "WHERE " +
                 "ID = @ID and" +
                 "Description = @DESCRIPTION";

@@ -21,5 +21,6 @@ namespace JSONFirebirdWebServiceTest.Models
         public bool RECURRING;
         public DateTime DUEDATE;
         public int PARENTID;
+        public int STATUSID;
     }
 }
