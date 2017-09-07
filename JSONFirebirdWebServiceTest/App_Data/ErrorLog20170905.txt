@@ -1,0 +1,124 @@
+********** 9/5/2017 11:16:09 AM **********
+Requested Resource: http://localhost:50342/api/users/update/10020
+Client Browser Details:  Chrome 60.0
+Mobile Device: False
+Client IP: ::1
+Request Type: PUT
+SQL COMMAND: update tag set  WHERE  ID = @ID and USERNAME = @USERNAME
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 17
+WHERE
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ProcessResponse(IResponse response) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 644
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 673
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadGenericResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 681
+   at FirebirdSql.Data.Client.Managed.Version11.GdsStatement.Prepare(String commandText) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version11\GdsStatement.cs:line 84
+   at FirebirdSql.Data.FirebirdClient.FbCommand.Prepare(Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1169
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1190
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 480
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 17
+WHERE
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 493
+   at JSONFirebirdWebServiceTest.Controllers.UsersController.Update(Int32 updatedId, User updatedUser) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\UsersController.cs:line 400
+
+********** 9/5/2017 11:19:58 AM **********
+Requested Resource: http://localhost:50342/api/users/update/10020
+Client Browser Details:  Chrome 60.0
+Mobile Device: False
+Client IP: ::1
+Request Type: PUT
+SQL COMMAND: update tag set UList:System.String PWORD pword WHERE  ID = @ID and USERNAME = @USERNAME
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 21
+:
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ProcessResponse(IResponse response) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 644
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 673
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadGenericResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 681
+   at FirebirdSql.Data.Client.Managed.Version11.GdsStatement.Prepare(String commandText) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version11\GdsStatement.cs:line 84
+   at FirebirdSql.Data.FirebirdClient.FbCommand.Prepare(Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1169
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1190
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 480
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 21
+:
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 493
+   at JSONFirebirdWebServiceTest.Controllers.UsersController.Update(Int32 updatedId, User updatedUser) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\UsersController.cs:line 400
+
+********** 9/5/2017 11:24:00 AM **********
+Requested Resource: http://localhost:50342/api/users/update/10020
+Client Browser Details:  Chrome 60.0
+Mobile Device: False
+Client IP: ::1
+Request Type: PUT
+SQL COMMAND: UList:Int32 ID 10020UList:System.DateTime CREATED 8/31/2016 12:00:00 AMUList:System.DateTime MODIFIED 8/31/2016 12:00:00 AMUList:Boolean ISACTIVE TrueUList:Boolean ISDELETED FalseUList:System.String USERNAME ADMINUList:System.String FNAME admin - fname2UList:System.String LNAME admin - lnameUList:System.String PWORD pword
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 1
+UList
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ProcessResponse(IResponse response) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 644
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 673
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadGenericResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 681
+   at FirebirdSql.Data.Client.Managed.Version11.GdsStatement.Prepare(String commandText) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version11\GdsStatement.cs:line 84
+   at FirebirdSql.Data.FirebirdClient.FbCommand.Prepare(Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1169
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1190
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 480
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 1
+UList
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 493
+   at JSONFirebirdWebServiceTest.Controllers.UsersController.Update(Int32 updatedId, User updatedUser) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\UsersController.cs:line 402
+
+********** 9/5/2017 11:25:01 AM **********
+Requested Resource: http://localhost:50342/api/users/update/10020
+Client Browser Details:  Chrome 60.0
+Mobile Device: False
+Client IP: ::1
+Request Type: PUT
+SQL COMMAND: UList:Int32 ID 10020UList:System.DateTime CREATED 8/31/2016 12:00:00 AMUList:System.DateTime MODIFIED 8/31/2016 12:00:00 AMUList:Boolean ISACTIVE TrueUList:Boolean ISDELETED FalseUList:System.String USERNAME ADMINUList:System.String FNAME admin - fname2UList:System.String LNAME admin - lnameUList:System.String PWORD pword
+Inner Exception Type: FirebirdSql.Data.Common.IscException
+Inner Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 1
+UList
+Inner Source: FirebirdSql.Data.FirebirdClient
+Inner Stack Trace: 
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ProcessResponse(IResponse response) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 644
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 673
+   at FirebirdSql.Data.Client.Managed.Version10.GdsDatabase.ReadGenericResponse() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version10\GdsDatabase.cs:line 681
+   at FirebirdSql.Data.Client.Managed.Version11.GdsStatement.Prepare(String commandText) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\Client\Managed\Version11\GdsStatement.cs:line 84
+   at FirebirdSql.Data.FirebirdClient.FbCommand.Prepare(Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1169
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior, Boolean returnsSet) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1190
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteCommand(CommandBehavior behavior) in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 1184
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 480
+Exception Type: FirebirdSql.Data.FirebirdClient.FbException
+Exception: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 1
+UList
+Stack Trace: 
+   at FirebirdSql.Data.FirebirdClient.FbCommand.ExecuteNonQuery() in C:\Users\Jiri\Documents\devel\NETProvider\working\Provider\src\FirebirdSql.Data.FirebirdClient\FirebirdClient\FbCommand.cs:line 493
+   at JSONFirebirdWebServiceTest.Controllers.UsersController.Update(Int32 updatedId, User updatedUser) in D:\Websites\WebServicePrograms\JSONFirebirdWebServiceTest\JSONFirebirdWebServiceTest\Controllers\UsersController.cs:line 402
+

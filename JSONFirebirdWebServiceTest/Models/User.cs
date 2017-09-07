@@ -7,14 +7,16 @@ namespace JSONFirebirdWebServiceTest.Models
 {
     public class User
     {
-        public int ID;
-        public DateTime CREATED;
-        public DateTime MODIFIED;
-        public bool ISACTIVE;
-        public bool ISDELETED;
-        public string USERNAME;
-        public string FNAME;
-        public string LNAME;
-        public string PWORD;        
+        public int ID { get; set; }
+        public DateTime CREATED { get; set; }
+        public DateTime MODIFIED { get; set; }
+        public bool ISACTIVE { get; set; }
+        public bool ISDELETED { get; set; }
+        public string USERNAME { get; set; }
+        public string FNAME { get; set; }
+        public string LNAME { get; set; }
+        public string PWORD { get; set; }
     }
+
+   
 }
