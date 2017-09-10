@@ -141,12 +141,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.html" />
     <Content Include="Definitions\Authenticate.aspx" />
     <Content Include="Definitions\Index.aspx" />
     <Content Include="Definitions\Users.aspx" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Index.html" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ChatHub.cs" />
     <Compile Include="Connect\Connection.cs" />
     <Compile Include="Connect\DBConnectionController.cs" />
     <Compile Include="Controllers\AuthenticateController.cs" />
@@ -223,8 +224,6 @@
     <Compile Include="Models\Tier.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignalR\ChatHub.cs" />
-    <Compile Include="SignalR\SignalRTest.cs" />
     <Compile Include="SQLTools\UpdateSetParser.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
